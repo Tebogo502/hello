@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Picture Gallery</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            justify-content: center;
+            margin-top: 24px;
+        }
+        .gallery img {
+            width: 220px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(110,142,251,0.10);
+            transition: transform 0.2s;
+        }
+        .gallery img:hover {
+            transform: scale(1.06);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="login file.html">Login</a></li>
+        </ul>
+    </nav>
+    <header>
+        <h1>My Picture Gallery</h1>
+        <p>Store and showcase your favorite pictures here.</p>
+    </header>
+    <section>
+        <div class="gallery">
+            <!-- Add your images below -->
+            <img src="images/avengers_01.jpg" alt="Avenger 1" onclick="openModal(this)">
+            <img src="images/avengers_02.jpg" alt="Avenger 2" onclick="openModal(this)">
+            <img src="images/avengers_03.jpg" alt="Avenger 3" onclick="openModal(this)">
+            <img src="images/avengers_04.jpg" alt="Avenger 4" onclick="openModal(this)">
+            <img src="images/avengers_05.jpg" alt="Avenger 5" onclick="openModal(this)">
+            <img src="images/avengers_06.jpg" alt="Avenger 6" onclick="openModal(this)">
+        </div>
+        <!-- Modal for big image -->
+        <div id="imgModal" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.8); justify-content:center; align-items:center;">
+            <span onclick="closeModal()" style="position:absolute; top:30px; right:40px; color:#fff; font-size:2.5em; cursor:pointer; font-weight:bold;">&times;</span>
+            <img id="modalImg" src="" alt="Big" style="max-width:90vw; max-height:80vh; border-radius:16px; box-shadow:0 4px 32px rgba(0,0,0,0.4);">
+            <div id="modalCaption" style="color:#fff; text-align:center; margin-top:18px; font-size:1.2em;"></div>
+        </div>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2025 Tebogo Phashe. All rights reserved.</p>
+    </footer>
+    <script>
+        function openModal(img) {
+            document.getElementById('imgModal').style.display = 'flex';
+            document.getElementById('modalImg').src = img.src;
+            document.getElementById('modalCaption').innerText = img.alt;
+        }
+        function closeModal() {
+            document.getElementById('imgModal').style.display = 'none';
+        }
+        // Optional: close modal on background click
+        document.getElementById('imgModal').onclick = function(e) {
+            if (e.target === this) closeModal();
+        };
+    </script>
+</body>
+</html>
